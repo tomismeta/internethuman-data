@@ -162,15 +162,20 @@ async function init() {
   
   // Load all themes from all essays
   const themeSelect = document.getElementById('theme-select');
+  const allThemes = [];
   for (const essay of essays.essays) {
     const essayData = await fetch(`${API}/api/essays/${essay.id}`).then(r => r.json());
     (essayData.themes || []).forEach(t => {
-      const opt = document.createElement('option');
-      opt.value = `${essay.id}/${t.id}`;
-      opt.textContent = `${t.name} (${essayData.title})`;
-      themeSelect.appendChild(opt);
+      allThemes.push({ name: t.name, value: `${essay.id}/${t.id}` });
     });
   }
+  allThemes.sort((a, b) => a.name.localeCompare(b.name));
+  allThemes.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t.value;
+    opt.textContent = t.name;
+    themeSelect.appendChild(opt);
+  });
   
   // Load authors
   const authors = await fetch(`${API}/api/authors`).then(r => r.json());
