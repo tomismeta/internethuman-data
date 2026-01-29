@@ -1,0 +1,206 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Internet Human Essays API",
+    "description": "API for accessing structured essay data from internethuman.neocities.org",
+    "version": "1.0.0",
+    "contact": {
+      "name": "tomismeta",
+      "url": "https://x.com/tomismeta"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://internethuman-data.vercel.app",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/essays": {
+      "get": {
+        "summary": "List all essays",
+        "operationId": "listEssays",
+        "tags": ["Essays"],
+        "responses": {
+          "200": {
+            "description": "List of available essays",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "essays": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string", "example": "new-art" },
+                          "href": { "type": "string", "example": "/api/essays/new-art" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/essays/{id}": {
+      "get": {
+        "summary": "Get a single essay",
+        "operationId": "getEssay",
+        "tags": ["Essays"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "new-art"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full essay data",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Essay" }
+              }
+            }
+          },
+          "404": {
+            "description": "Essay not found"
+          }
+        }
+      }
+    },
+    "/api/themes/{essayId}": {
+      "get": {
+        "summary": "Get themes and relationships for an essay",
+        "operationId": "getThemes",
+        "tags": ["Themes"],
+        "parameters": [
+          {
+            "name": "essayId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "new-art"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Themes with relationships",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "essay_id": { "type": "string" },
+                    "themes": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/ThemeSummary" }
+                    },
+                    "relationships": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/ThemeRelationship" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Essay not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Essay": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "handle": { "type": "string" },
+                "name": { "type": "string" },
+                "url": { "type": "string" }
+              }
+            }
+          },
+          "prompt": {
+            "type": "object",
+            "properties": {
+              "source": { "type": "string" },
+              "url": { "type": "string" },
+              "context": { "type": "string" }
+            }
+          },
+          "themes": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Theme" }
+          },
+          "theme_relationships": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ThemeRelationship" }
+          },
+          "case_studies": { "type": "array" },
+          "naming_attempts": { "type": "array" },
+          "open_threads": { "type": "array", "items": { "type": "string" } },
+          "meta": { "type": "object" }
+        }
+      },
+      "Theme": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "thesis": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "speaker": { "type": "string" },
+                "quote": { "type": "string" }
+              }
+            }
+          },
+          "questions": { "type": "array", "items": { "type": "string" } },
+          "relates_to": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "ThemeSummary": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "thesis": { "type": "string" },
+          "relates_to": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "ThemeRelationship": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "relationship": {
+            "type": "string",
+            "enum": ["causation", "enablement", "implication", "tension", "trade-off", "convergence", "mechanism", "feedback-loop"]
+          },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}
