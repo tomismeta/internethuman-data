@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Internet Human Essays API",
-    "description": "API for accessing structured essay data from internethuman.neocities.org",
-    "version": "1.0.0",
+    "title": "Internet Human API",
+    "description": "API for accessing structured essays and thoughts from internethuman.neocities.org. Includes long-form essays broken down into themes and relationships, plus short-form thoughts with tags.",
+    "version": "1.1.0",
     "contact": {
       "name": "tomismeta",
       "url": "https://x.com/tomismeta"
@@ -16,60 +16,6 @@
     }
   ],
   "paths": {
-    "/api/authors": {
-      "get": {
-        "summary": "List all authors",
-        "operationId": "listAuthors",
-        "tags": ["Authors"],
-        "responses": {
-          "200": {
-            "description": "List of authors",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "authors": {
-                      "type": "array",
-                      "items": { "$ref": "#/components/schemas/AuthorSummary" }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/authors/{handle}": {
-      "get": {
-        "summary": "Get author by handle/name with all their quotes",
-        "operationId": "getAuthor",
-        "tags": ["Authors"],
-        "parameters": [
-          {
-            "name": "handle",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "tomismeta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Author with essays and quotes",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/AuthorDetail" }
-              }
-            }
-          },
-          "404": {
-            "description": "Author not found"
-          }
-        }
-      }
-    },
     "/api/essays": {
       "get": {
         "summary": "List all essays",
@@ -213,18 +159,170 @@
             }
           },
           "404": {
-            "description": "Theme not found",
+            "description": "Theme not found"
+          }
+        }
+      }
+    },
+    "/api/thoughts": {
+      "get": {
+        "summary": "List all thoughts",
+        "operationId": "listThoughts",
+        "tags": ["Thoughts"],
+        "responses": {
+          "200": {
+            "description": "List of all thoughts with tags",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "collection": { "type": "string" },
+                    "description": { "type": "string" },
+                    "author": { "$ref": "#/components/schemas/AuthorInfo" },
+                    "epigraphs": { "type": "array", "items": { "type": "string" } },
+                    "count": { "type": "integer" },
+                    "thoughts": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/ThoughtSummary" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/thoughts/{id}": {
+      "get": {
+        "summary": "Get a single thought",
+        "operationId": "getThought",
+        "tags": ["Thoughts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "hyper-abstractionism"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full thought data",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Thought" }
+              }
+            }
+          },
+          "404": {
+            "description": "Thought not found"
+          }
+        }
+      }
+    },
+    "/api/thoughts/tags/{tag}": {
+      "get": {
+        "summary": "Get thoughts by tag",
+        "operationId": "getThoughtsByTag",
+        "tags": ["Thoughts"],
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "hyperstition"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thoughts matching the tag",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tag": { "type": "string" },
+                    "count": { "type": "integer" },
+                    "thoughts": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Thought" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No thoughts with this tag",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "error": { "type": "string" },
-                    "available": { "type": "array", "items": { "type": "string" } }
+                    "available_tags": { "type": "array", "items": { "type": "string" } }
                   }
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/authors": {
+      "get": {
+        "summary": "List all authors",
+        "operationId": "listAuthors",
+        "tags": ["Authors"],
+        "responses": {
+          "200": {
+            "description": "List of authors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "authors": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/AuthorSummary" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/authors/{handle}": {
+      "get": {
+        "summary": "Get author by handle/name with all their quotes",
+        "operationId": "getAuthor",
+        "tags": ["Authors"],
+        "parameters": [
+          {
+            "name": "handle",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "tomismeta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Author with essays and quotes",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AuthorDetail" }
+              }
+            }
+          },
+          "404": {
+            "description": "Author not found"
           }
         }
       }
@@ -240,14 +338,7 @@
           "subtitle": { "type": "string" },
           "authors": {
             "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "handle": { "type": "string" },
-                "name": { "type": "string" },
-                "url": { "type": "string" }
-              }
-            }
+            "items": { "$ref": "#/components/schemas/AuthorInfo" }
           },
           "prompt": {
             "type": "object",
@@ -266,7 +357,6 @@
             "items": { "$ref": "#/components/schemas/ThemeRelationship" }
           },
           "case_studies": { "type": "array" },
-          "naming_attempts": { "type": "array" },
           "open_threads": { "type": "array", "items": { "type": "string" } },
           "meta": { "type": "object" }
         }
@@ -307,9 +397,37 @@
           "to": { "type": "string" },
           "relationship": {
             "type": "string",
-            "enum": ["causation", "enablement", "implication", "tension", "trade-off", "convergence", "mechanism", "feedback-loop"]
+            "enum": ["causation", "enablement", "implication", "tension", "trade-off", "convergence", "mechanism", "feedback-loop", "precursor"]
           },
           "description": { "type": "string" }
+        }
+      },
+      "Thought": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "text": { "type": "string" },
+          "tweet_url": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "author": { "$ref": "#/components/schemas/AuthorInfo" }
+        }
+      },
+      "ThoughtSummary": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "href": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "AuthorInfo": {
+        "type": "object",
+        "properties": {
+          "handle": { "type": "string" },
+          "name": { "type": "string" },
+          "url": { "type": "string" }
         }
       },
       "AuthorSummary": {
@@ -325,14 +443,7 @@
       "AuthorDetail": {
         "type": "object",
         "properties": {
-          "author": {
-            "type": "object",
-            "properties": {
-              "handle": { "type": "string" },
-              "name": { "type": "string" },
-              "url": { "type": "string" }
-            }
-          },
+          "author": { "$ref": "#/components/schemas/AuthorInfo" },
           "essays": {
             "type": "array",
             "items": {
