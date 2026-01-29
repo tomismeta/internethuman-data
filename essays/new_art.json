@@ -1,0 +1,317 @@
+{
+  "id": "new-art",
+  "title": "New Art",
+  "subtitle": "A new art is emerging that can't be viewed directly—only lived inside, mistaken for life until it's already happened.",
+  "authors": [
+    {
+      "handle": "doberes",
+      "name": "d",
+      "url": "https://x.com/doberes"
+    },
+    {
+      "handle": "tomismeta",
+      "name": "tom",
+      "url": "https://x.com/tomismeta"
+    }
+  ],
+  "prompt": {
+    "source": "113",
+    "url": "https://x.com/0x113d/status/1989541302598357276",
+    "context": "A public discussion on what it would take to create something truly of the time"
+  },
+  "themes": [
+    {
+      "id": "hindsight-recognition",
+      "name": "Hindsight Recognition",
+      "thesis": "New art cannot be perceived directly in the moment; it is only recognized in hindsight, mistaken for life until it has already happened.",
+      "evidence": [
+        {
+          "speaker": "d",
+          "quote": "ive been thinking about what it would take to create something truly of the time and how we would be mostly blind to it."
+        },
+        {
+          "speaker": "tom",
+          "quote": "Will we even be able to perceive a new form of art in the moment, to experience it directly, catching it in the act of its performance or will we only recognize it in hindsight (and is that even a bad thing)?"
+        },
+        {
+          "speaker": "d",
+          "quote": "so i think we would recognize things in hindsight. and i don't think that's bad unless you want to be an active participant in the beginning of the new newness."
+        }
+      ],
+      "questions": [
+        "Is hindsight recognition a feature or a limitation?",
+        "What does it mean to be an 'active participant in the newness'?"
+      ],
+      "relates_to": ["new-cultural-organs", "participation-spectrum"]
+    },
+    {
+      "id": "new-cultural-organs",
+      "name": "New Cultural Organs",
+      "thesis": "Initial outputs of new art will look familiar but engage new cultural senses—new modes of meaning-making that we don't yet have language for.",
+      "evidence": [
+        {
+          "speaker": "d",
+          "quote": "i suspect things won't feel or look different. like the initial outputs would look familiar but would be engaging in new cultural senses and organs. and eventually we can strip away the old and engage with the new things more purely."
+        },
+        {
+          "speaker": "d",
+          "quote": "There will be pioneers from spaces outside of art. That's why I think the prediction market bit was super interesting."
+        }
+      ],
+      "questions": [
+        "What are these 'new cultural organs'?",
+        "How do we develop sensitivity to them?"
+      ],
+      "relates_to": ["hindsight-recognition", "performance-as-container"]
+    },
+    {
+      "id": "performance-as-container",
+      "name": "Performance as Container",
+      "thesis": "Performance art is the medium capacious enough to hold all the strands of new art—visual outputs become byproducts of social/financial performance.",
+      "evidence": [
+        {
+          "speaker": "d",
+          "quote": "My sense is that performance art is the space that can hold all the strands. visual outputs are reduced to the productive outputs of an engaged community required for financial/social performance."
+        },
+        {
+          "speaker": "tom",
+          "quote": "My intuition is that a lot of new art will be performative and will be difficult to detect through traditional consumption senses (due to the scale/scope), and knowing (and/or unknowing) participants in the production of the performance will focus (consciously or unconsciously) moreso on the production than consumption mechanism/output framing."
+        }
+      ],
+      "questions": [
+        "Will the artists be the orchestrators/manipulators of the performance, those that can frame it for consumption, or both?"
+      ],
+      "relates_to": ["role-fluidity", "lenses-and-frames"]
+    },
+    {
+      "id": "role-fluidity",
+      "name": "Role Fluidity",
+      "thesis": "Roles blur and evolve over time—artist, orchestrator, participant, and audience become interchangeable as the work progresses through stages.",
+      "evidence": [
+        {
+          "speaker": "d",
+          "quote": "My sense is that the roles will change over time as a work progresses through 'stages'. I believe some control will be diffused or handed off as I assume there will be some form of market play or some engagement with risk."
+        },
+        {
+          "speaker": "tom",
+          "quote": "Fluidity in roles will blur the lines on those constructing the performance and those that are experiencing/consuming it, creating uncertainty of the edges of the 'installation/exhibit'. The initiator may not be the best steward of the performance (and output) depending on the permutation/evolution that the performance takes."
+        }
+      ],
+      "questions": [
+        "Does the initiator construct a lens that acknowledges the performance after they let go, or constrain it to the part prior to control diffusion?",
+        "How is agency vs. 'ownership' distributed?"
+      ],
+      "relates_to": ["performance-as-container", "lenses-and-frames", "nested-performances"]
+    },
+    {
+      "id": "lenses-and-frames",
+      "name": "Lenses & Frames",
+      "thesis": "Non-participants need lenses/frames to consume the work, but framing is itself a creative and potentially limiting act. The question of accessibility vs. experiential purity remains open.",
+      "evidence": [
+        {
+          "speaker": "tom",
+          "quote": "How do you consume it if you're not a direct participant (follow the right people, watch the right financial instruments). Should it remain largely inaccessible or should a frame be wrapped around for consumable output for the non-participant? Is it wrong to create a lens and should it be only consumed experientially."
+        },
+        {
+          "speaker": "tom",
+          "quote": "The lenses/frames that can be applied are limitless."
+        },
+        {
+          "speaker": "tom",
+          "quote": "It's my sense that conventional framing of the output won't do the performances justice; new framing, experiential participation and holding the metaphorical looking glass become important devices for awareness, consumption and appreciation."
+        }
+      ],
+      "questions": [
+        "Is it wrong to create a lens?",
+        "Should new art only be consumed experientially?",
+        "If a tree falls in a forest and no one is around to hear it, does it make a sound?"
+      ],
+      "relates_to": ["participation-spectrum", "role-fluidity"]
+    },
+    {
+      "id": "nested-performances",
+      "name": "Nested Performances",
+      "thesis": "Performances exist at multiple scales—from haiku to epic—and can be nested within broader performances, eventually forming a biosphere of performant organisms.",
+      "evidence": [
+        {
+          "speaker": "d",
+          "quote": "this space could produce performances more like haiku and some like epics. there can be performances nestled in broader performances."
+        },
+        {
+          "speaker": "tom",
+          "quote": "My sense is when those are mastered (to some degree) with an observing audience at some critical mass, organic and/or constructed interaction between disparate and nested performances will inevitably occur. This becomes a biosphere of performant organisms that clash, coalesce and oscillate around each other resulting another frame that can be rendered/consumed as output."
+        }
+      ],
+      "questions": [
+        "What is the relationship between nested performances?",
+        "When does a performance biosphere become 'life'?"
+      ],
+      "relates_to": ["role-fluidity", "art-as-life"]
+    },
+    {
+      "id": "participation-spectrum",
+      "name": "Participation Spectrum",
+      "thesis": "There is a spectrum from active participant ('adjacent tree') to passive consumer, with unwitting participants in between. Full experience requires participation.",
+      "evidence": [
+        {
+          "speaker": "tom",
+          "quote": "Unless you can become the adjacent tree. Or, deploy an unmanned drone."
+        },
+        {
+          "speaker": "d",
+          "quote": "I think to experience these performances we need to at least be those adjacent trees. It's participatory."
+        },
+        {
+          "speaker": "tom",
+          "quote": "My sense is that there will be a cohort interest in the participatory engagement (primarily) and another cohort that desires (or can only afford—due to time/commitment to their participatory art) consumption from a degree or two of separation away. I want to be the adjacent tree."
+        },
+        {
+          "speaker": "d",
+          "quote": "I think there will also be unwitting participants."
+        }
+      ],
+      "questions": [
+        "What would it be to be adjacent?",
+        "Can you truly experience without participating?"
+      ],
+      "relates_to": ["lenses-and-frames", "hindsight-recognition"]
+    },
+    {
+      "id": "art-as-life",
+      "name": "Art as Life / Intentionality",
+      "thesis": "What is being described approaches 'life' itself (naturally occurring performance). Intentionality is the inflection point between life-as-we-know-it and emergent new art.",
+      "evidence": [
+        {
+          "speaker": "tom",
+          "quote": "To some degree what we're describing can be argued as 'life' (naturally occurring performance), with intentionality being the inflection point/delineation between life as we know it and emergent new art."
+        }
+      ],
+      "questions": [
+        "Where is the boundary between art and life?",
+        "Is intentionality necessary or sufficient?"
+      ],
+      "relates_to": ["nested-performances", "hyperstition-as-method"]
+    },
+    {
+      "id": "hyperstition-as-method",
+      "name": "Hyperstition as Method",
+      "thesis": "New art is hyperstitional—more like magic than media. The output isn't the memes or posts themselves; it's everything around them.",
+      "evidence": [
+        {
+          "speaker": "d",
+          "quote": "I've been thinking it is hyperstitial - more like magic. And there have been hyperstitial performers before but maybe not with this set of tools, this level of intent."
+        },
+        {
+          "speaker": "d",
+          "quote": "This frame gives it an output that isn't the memes or the posts themselves. It's everything around them."
+        },
+        {
+          "speaker": "tom",
+          "quote": "It's not digital art it's like collective, metaspacial art (but again, that seems too narrow for the new art category). I struggle to 'name it'."
+        }
+      ],
+      "questions": [
+        "What is the proper name for this?",
+        "How do hyperstitional tools differ from previous artistic tools?"
+      ],
+      "relates_to": ["art-as-life", "performance-as-container"]
+    }
+  ],
+  "theme_relationships": [
+    {
+      "from": "hindsight-recognition",
+      "to": "new-cultural-organs",
+      "relationship": "causation",
+      "description": "We recognize in hindsight because the new cultural organs needed to perceive in real-time haven't yet developed."
+    },
+    {
+      "from": "new-cultural-organs",
+      "to": "performance-as-container",
+      "relationship": "enablement",
+      "description": "New cultural organs emerge from participation in performance, not from viewing artifacts."
+    },
+    {
+      "from": "performance-as-container",
+      "to": "role-fluidity",
+      "relationship": "implication",
+      "description": "If performance is the container, then roles must be fluid—participants become performers become audience."
+    },
+    {
+      "from": "role-fluidity",
+      "to": "lenses-and-frames",
+      "relationship": "tension",
+      "description": "Fluid roles complicate framing—who has authority to create the lens? When?"
+    },
+    {
+      "from": "lenses-and-frames",
+      "to": "participation-spectrum",
+      "relationship": "trade-off",
+      "description": "Better frames enable wider consumption but risk diluting the experiential core."
+    },
+    {
+      "from": "nested-performances",
+      "to": "art-as-life",
+      "relationship": "convergence",
+      "description": "As nested performances become a biosphere, the distinction from 'life' collapses."
+    },
+    {
+      "from": "art-as-life",
+      "to": "hyperstition-as-method",
+      "relationship": "mechanism",
+      "description": "Hyperstition is how art becomes life—fiction written into reality through collective performance."
+    },
+    {
+      "from": "participation-spectrum",
+      "to": "hindsight-recognition",
+      "relationship": "feedback-loop",
+      "description": "Non-participants can only recognize in hindsight; participants may perceive in real-time."
+    }
+  ],
+  "case_studies": [
+    {
+      "name": "Remilia",
+      "founder": "Charlotte Fang",
+      "relevance": "Primary example of emergent social/financial performance art",
+      "observations": [
+        "Uncoordinated individuals producing disparate content (memes, art)",
+        "Loose coordination through principles/ideals/memetic generation",
+        "Off-timeline social mesh + financial exercise across fungible and non-fungible assets",
+        "Consumption requires following the right people, watching the right financial instruments",
+        "Not 'digital art'—something broader, metaspacial"
+      ],
+      "open_questions": [
+        "Is Remilia new art?",
+        "Should it remain largely inaccessible or be framed for non-participants?"
+      ]
+    }
+  ],
+  "naming_attempts": [
+    {
+      "term": "digital art",
+      "status": "rejected",
+      "reason": "Too narrow; makes most 'digital' art seem frail, backwards, formal play"
+    },
+    {
+      "term": "collective, metaspacial art",
+      "status": "partial",
+      "reason": "True but too narrow for the category"
+    },
+    {
+      "term": "hyperstitial",
+      "status": "promising",
+      "reason": "Captures the magic-like quality and reality-authoring aspect"
+    }
+  ],
+  "open_threads": [
+    "What would it be to be 'adjacent'?",
+    "Will there be a 'Neanderthal cave art' moment where we look back at current digital art as primitive?",
+    "How do we develop the cultural organs to perceive new art in real-time?",
+    "What is the proper name for this emerging form?"
+  ],
+  "meta": {
+    "format": "dialogue",
+    "last_updated": "2025-12-12",
+    "source_url": "https://internethuman.neocities.org/newart",
+    "version": "1.0.0"
+  }
+}
