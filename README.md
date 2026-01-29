@@ -17,13 +17,13 @@ Structured data API for essays from [internethuman.neocities.org](https://intern
 
 ```bash
 # List essays
-curl https://internethuman-data.vercel.app/api/essays
+curl https://internethuman.vercel.app/api/essays
 
 # Get "New Art" essay
-curl https://internethuman-data.vercel.app/api/essays/new-art
+curl https://internethuman.vercel.app/api/essays/new-art
 
 # Get themes only
-curl https://internethuman-data.vercel.app/api/themes/new-art
+curl https://internethuman.vercel.app/api/themes/new-art
 ```
 
 ## Swagger/OpenAPI

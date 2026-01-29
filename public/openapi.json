@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://internethuman-data.vercel.app",
+      "url": "https://internethuman.vercel.app",
       "description": "Production"
     }
   ],
