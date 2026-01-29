@@ -10,6 +10,8 @@ Structured data API for essays from [internethuman.neocities.org](https://intern
 | GET | `/api/essays/{id}` | Get full essay data |
 | GET | `/api/themes/{essayId}` | Get all themes + relationships |
 | GET | `/api/themes/{essayId}/{themeId}` | Get a specific theme by ID |
+| GET | `/api/authors` | List all authors |
+| GET | `/api/authors/{handle}` | Get author with all their quotes |
 
 ## Example
 
