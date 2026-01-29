@@ -3,25 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Internet Human Essays API</title>
-  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css">
+  <title>Internet Human — Essays API</title>
   <style>
-    body { margin: 0; padding: 0; }
-    .topbar { display: none !important; }
+    body {
+      font-family: serif;
+      max-width: 640px;
+      margin: 2em auto;
+      padding: 0 1em;
+      line-height: 1.6;
+      background: #fff;
+      color: #000;
+    }
+    a { color: #00f; }
+    a:visited { color: #551a8b; }
+    blockquote {
+      margin: 1em 0;
+      padding: 0.5em 1em;
+      border-left: 2px solid #ccc;
+      background: #f9f9f9;
+      font-style: italic;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 1em;
+      overflow-x: auto;
+      font-size: 0.85em;
+    }
+    select, button {
+      font-family: serif;
+      font-size: 1em;
+      padding: 0.3em 0.6em;
+      margin: 0.25em 0;
+    }
+    button { cursor: pointer; }
+    .section { margin: 2em 0; }
+    .result { margin-top: 1em; }
+    .meta { color: #666; font-size: 0.9em; }
+    hr { border: none; border-top: 1px solid #ccc; margin: 2em 0; }
+    ul { padding-left: 1.5em; }
+    #themes-list, #quotes-list { margin-top: 1em; }
+    .theme-item { margin: 1em 0; padding: 0.5em; background: #fafafa; }
+    .theme-name { font-weight: bold; }
+    .theme-thesis { margin: 0.5em 0; }
+    .relationship { font-size: 0.85em; color: #555; }
   </style>
 </head>
 <body>
-  <div id="swagger-ui"></div>
-  <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
-  <script>
-    window.onload = () => {
-      SwaggerUIBundle({
-        url: '/openapi.json',
-        dom_id: '#swagger-ui',
-        presets: [SwaggerUIBundle.presets.apis, SwaggerUIBundle.SwaggerUIStandalonePreset],
-        layout: 'BaseLayout'
-      });
-    };
-  </script>
+
+<h1>Internet Human</h1>
+<p class="meta">Essays API — structured data from <a href="https://internethuman.neocities.org">internethuman.neocities.org</a></p>
+
+<hr>
+
+<div class="section">
+  <h2>Essays</h2>
+  <p>Select an essay to explore its themes, relationships, and quotes.</p>
+  <select id="essay-select">
+    <option value="">— select essay —</option>
+  </select>
+  <button onclick="loadEssay()">Load</button>
+  
+  <div id="essay-result" class="result"></div>
+</div>
+
+<hr>
+
+<div class="section">
+  <h2>Themes</h2>
+  <p>Explore themes from the selected essay.</p>
+  <select id="theme-select">
+    <option value="">— select theme —</option>
+  </select>
+  <button onclick="loadTheme()">Load</button>
+  
+  <div id="theme-result" class="result"></div>
+</div>
+
+<hr>
+
+<div class="section">
+  <h2>Authors</h2>
+  <p>View all quotes by an author across essays.</p>
+  <select id="author-select">
+    <option value="">— select author —</option>
+  </select>
+  <button onclick="loadAuthor()">Load</button>
+  
+  <div id="author-result" class="result"></div>
+</div>
+
+<hr>
+
+<div class="section">
+  <h2>API Endpoints</h2>
+  <ul>
+    <li><a href="/api/essays">/api/essays</a> — list all essays</li>
+    <li><a href="/api/essays/new-art">/api/essays/{id}</a> — full essay data</li>
+    <li><a href="/api/themes/new-art">/api/themes/{essayId}</a> — themes + relationships</li>
+    <li><a href="/api/themes/new-art/hindsight-recognition">/api/themes/{essayId}/{themeId}</a> — single theme</li>
+    <li><a href="/api/authors">/api/authors</a> — list all authors</li>
+    <li><a href="/api/authors/tomismeta">/api/authors/{handle}</a> — author + quotes</li>
+  </ul>
+  <p class="meta"><a href="/openapi.json">OpenAPI spec</a> · <a href="https://github.com/tomismeta/internethuman-data">GitHub</a></p>
+</div>
+
+<hr>
+
+<p class="meta">
+  <a href="https://x.com/tomismeta">@tomismeta</a>
+</p>
+
+<script>
+const API = '';
+
+async function init() {
+  // Load essays
+  const essays = await fetch(`${API}/api/essays`).then(r => r.json());
+  const essaySelect = document.getElementById('essay-select');
+  essays.essays.forEach(e => {
+    const opt = document.createElement('option');
+    opt.value = e.id;
+    opt.textContent = e.id;
+    essaySelect.appendChild(opt);
+  });
+  
+  // Load authors
+  const authors = await fetch(`${API}/api/authors`).then(r => r.json());
+  const authorSelect = document.getElementById('author-select');
+  authors.authors.forEach(a => {
+    const opt = document.createElement('option');
+    opt.value = a.handle || a.name;
+    opt.textContent = `${a.name} (@${a.handle})`;
+    authorSelect.appendChild(opt);
+  });
+}
+
+async function loadEssay() {
+  const id = document.getElementById('essay-select').value;
+  if (!id) return;
+  
+  const data = await fetch(`${API}/api/essays/${id}`).then(r => r.json());
+  const themeSelect = document.getElementById('theme-select');
+  
+  // Populate themes dropdown
+  themeSelect.innerHTML = '<option value="">— select theme —</option>';
+  (data.themes || []).forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = `${id}/${t.id}`;
+    opt.textContent = t.name;
+    themeSelect.appendChild(opt);
+  });
+  
+  // Display essay
+  let html = `<h3>${data.title}</h3>`;
+  html += `<blockquote>${data.subtitle}</blockquote>`;
+  html += `<p class="meta">Authors: ${data.authors.map(a => `<a href="https://x.com/${a.handle}">${a.name}</a>`).join(', ')}</p>`;
+  html += `<p><strong>${data.themes.length} themes</strong> · ${data.theme_relationships.length} relationships</p>`;
+  
+  html += `<h4>Themes</h4><ul>`;
+  data.themes.forEach(t => {
+    html += `<li><strong>${t.name}</strong> — ${t.thesis.slice(0, 100)}...</li>`;
+  });
+  html += `</ul>`;
+  
+  if (data.open_threads) {
+    html += `<h4>Open Questions</h4><ul>`;
+    data.open_threads.forEach(q => {
+      html += `<li>${q}</li>`;
+    });
+    html += `</ul>`;
+  }
+  
+  document.getElementById('essay-result').innerHTML = html;
+}
+
+async function loadTheme() {
+  const val = document.getElementById('theme-select').value;
+  if (!val) return;
+  
+  const [essayId, themeId] = val.split('/');
+  const data = await fetch(`${API}/api/themes/${essayId}/${themeId}`).then(r => r.json());
+  const theme = data.theme;
+  
+  let html = `<div class="theme-item">`;
+  html += `<div class="theme-name">${theme.name}</div>`;
+  html += `<div class="theme-thesis">${theme.thesis}</div>`;
+  
+  if (theme.evidence && theme.evidence.length) {
+    html += `<h4>Evidence</h4>`;
+    theme.evidence.forEach(e => {
+      html += `<blockquote><strong>${e.speaker}:</strong> "${e.quote}"</blockquote>`;
+    });
+  }
+  
+  if (theme.questions && theme.questions.length) {
+    html += `<h4>Open Questions</h4><ul>`;
+    theme.questions.forEach(q => {
+      html += `<li>${q}</li>`;
+    });
+    html += `</ul>`;
+  }
+  
+  if (data.relationships && data.relationships.length) {
+    html += `<h4>Relationships</h4><ul>`;
+    data.relationships.forEach(r => {
+      const dir = r.from === theme.id ? `→ ${r.to}` : `← ${r.from}`;
+      html += `<li class="relationship"><strong>${r.relationship}</strong> ${dir}: ${r.description}</li>`;
+    });
+    html += `</ul>`;
+  }
+  
+  html += `</div>`;
+  document.getElementById('theme-result').innerHTML = html;
+}
+
+async function loadAuthor() {
+  const handle = document.getElementById('author-select').value;
+  if (!handle) return;
+  
+  const data = await fetch(`${API}/api/authors/${handle}`).then(r => r.json());
+  
+  let html = `<h3>${data.author.name} <a href="${data.author.url}">@${data.author.handle}</a></h3>`;
+  html += `<p>${data.quote_count} quotes across ${data.essays.length} essay(s)</p>`;
+  
+  html += `<h4>Quotes</h4>`;
+  data.quotes.forEach(q => {
+    html += `<blockquote>"${q.quote.slice(0, 200)}${q.quote.length > 200 ? '...' : ''}"<br><span class="meta">— ${q.theme_name} (${q.essay_id})</span></blockquote>`;
+  });
+  
+  document.getElementById('author-result').innerHTML = html;
+}
+
+init();
+</script>
+
 </body>
 </html>
