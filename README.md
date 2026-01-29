@@ -8,7 +8,8 @@ Structured data API for essays from [internethuman.neocities.org](https://intern
 |--------|------|-------------|
 | GET | `/api/essays` | List all essays |
 | GET | `/api/essays/{id}` | Get full essay data |
-| GET | `/api/themes/{essayId}` | Get themes + relationships |
+| GET | `/api/themes/{essayId}` | Get all themes + relationships |
+| GET | `/api/themes/{essayId}/{themeId}` | Get a specific theme by ID |
 
 ## Example
 

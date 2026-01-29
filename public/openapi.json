@@ -117,6 +117,63 @@
           }
         }
       }
+    },
+    "/api/themes/{essayId}/{themeId}": {
+      "get": {
+        "summary": "Get a specific theme by ID",
+        "operationId": "getThemeById",
+        "tags": ["Themes"],
+        "parameters": [
+          {
+            "name": "essayId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "new-art"
+          },
+          {
+            "name": "themeId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "hindsight-recognition"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Theme with its relationships",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "essay_id": { "type": "string" },
+                    "theme": { "$ref": "#/components/schemas/Theme" },
+                    "relationships": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/ThemeRelationship" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Theme not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" },
+                    "available": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
