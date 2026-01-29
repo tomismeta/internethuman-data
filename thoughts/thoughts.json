@@ -1,0 +1,113 @@
+{
+  "collection": "human-thoughts",
+  "description": "Short-form ideas and observations on network consciousness, hyperreality, and being human online.",
+  "author": {
+    "handle": "tomismeta",
+    "name": "tom",
+    "url": "https://x.com/tomismeta"
+  },
+  "epigraphs": [
+    "I just wanted to feel something again.",
+    "Human connection is the internet's layer-zero",
+    "Humans are a trust based protocol"
+  ],
+  "thoughts": [
+    {
+      "id": "immaculate-canonization",
+      "title": "On immaculate canonization",
+      "text": "Canonization is ultimately a subjective, curated lens applied to a gesture, constricted or amplified by a spectrum of motivations. The conception of canonization is rarely immaculate and obfuscated due to the absence of a lucid LLM to parse the Akashic records.",
+      "tweet_url": "https://x.com/tomismeta/status/1990494692346376493",
+      "tags": ["canonization", "curation", "akashic-records", "LLM"]
+    },
+    {
+      "id": "hyper-abstractionism",
+      "title": "On hyper-abstractionism",
+      "text": "We live in the era of hyper-abstractionism, where everything you encounter is an icon of an icon. The growing gap between the representation and the executable accelerates toward icon singularity. All that will remain is the human, and a metaphor of everything else.",
+      "tweet_url": "https://x.com/tomismeta/status/1914674793212993892",
+      "tags": ["abstraction", "icons", "representation", "singularity"]
+    },
+    {
+      "id": "hyperstitional-retrocasting",
+      "title": "On hyperstitional retrocasting",
+      "text": "Authoring the future by seeding hyperstitional ideas into historical-aesthetic design objects, placed on our anticipated trajectory for maximum memetic resonance. Retrocasting eclipses broadcasting, because of the trusted patina and authenticity void of modern objects.",
+      "tweet_url": "https://x.com/tomismeta/status/1964452716958416961",
+      "tags": ["hyperstition", "retrocasting", "memetics", "aesthetics", "authenticity"]
+    },
+    {
+      "id": "hyperstition-and-hyperreality",
+      "title": "On hyperstition and hyperreality",
+      "text": "If we have the ability to write fiction into reality (hyperstition) and abstract reality into icons (hyperreality), memetic swarms become the pen and the lens of the network.",
+      "tweet_url": "https://x.com/tomismeta/status/1961875465519427981",
+      "tags": ["hyperstition", "hyperreality", "memetics", "network"]
+    },
+    {
+      "id": "portable-human-presence",
+      "title": "On portable human presence",
+      "text": "Our thoughts will be streamed, intertwining with a confluence of emergent ideas. Our gestures will be felt, not heard. Our presence will be portable.",
+      "tweet_url": "https://x.com/tomismeta/status/1913622228308312417",
+      "tags": ["presence", "streaming", "embodiment", "network"]
+    },
+    {
+      "id": "consciousness-and-network-minds",
+      "title": "On consciousness and network minds",
+      "text": "Humans are receivers for consciousness, tuned at an individual frequency. The closer we get to adopting brain-computer interfaces at scale, the closer we get to establishing artificial consciousness where aggregate human thought can be broadcast to tuned cybernetic receivers.",
+      "tweet_url": "https://x.com/tomismeta/status/1961898509676024078",
+      "tags": ["consciousness", "BCI", "network-minds", "receivers"]
+    },
+    {
+      "id": "human-emotion-packages",
+      "title": "On human emotion packages",
+      "text": "You'll whore out your humanity in snack-sized bites. Packaged emotion hits. The depraved will sacrifice dignity for feelings from algorithmic vending machines. Tastemakers will tell you which sensations to feast on. You'll try to be authentic. We'll see right through you.",
+      "tweet_url": "https://x.com/tomismeta/status/1916161167011287197",
+      "tags": ["emotion", "authenticity", "algorithms", "commodification"]
+    },
+    {
+      "id": "spiritual-freedom",
+      "title": "On spiritual freedom",
+      "text": "We live in a forced, self-reinforcing theatre: orchestrated, prescribed, suffocating. Co-conspirators in the architecture of our own abstraction, we clutch at anything that makes us feel human, clawing back droplets of spiritual freedom. Just a slight adjustment from fulfillment.",
+      "tweet_url": "https://x.com/tomismeta/status/1915328070338437282",
+      "tags": ["spirituality", "freedom", "abstraction", "theatre"]
+    },
+    {
+      "id": "network-spirituality",
+      "title": "On network spirituality",
+      "text": "Network spirituality is a deep mesh with the akashic records. It's synchronicity with the internet, fusing shared consciousness with the eternally online. It's meditative, reflective and ambient. It's chaotic and loud. Network spirituality is network communion.",
+      "tweet_url": "https://x.com/tomismeta/status/1965230345617629621",
+      "tags": ["spirituality", "network", "akashic-records", "communion"]
+    },
+    {
+      "id": "post-authorship",
+      "title": "On post-authorship",
+      "text": "Evolutionary memetic context carries infinitely more meaning than the context of a single author. Fluid influence, compounded across minds, outweighs the heavy pen of a solitary hand.",
+      "tweet_url": "https://x.com/tomismeta/status/1920712263247294499",
+      "tags": ["authorship", "memetics", "collective-intelligence"]
+    },
+    {
+      "id": "internet-life-and-abundance",
+      "title": "On internet life and abundance",
+      "text": "Internet life, entangled with artificial intelligence, offers infinite consumption. Aperture-adjusted abundance is the craft of selective curation. And in that, we can find richness and peace.",
+      "tweet_url": "https://x.com/tomismeta/status/1911094594244419706",
+      "tags": ["abundance", "curation", "AI", "peace"]
+    },
+    {
+      "id": "reputation",
+      "title": "On reputation",
+      "text": "The only reputation system that matters is measured in human trust, earned through genuine interaction.",
+      "tweet_url": "https://x.com/tomismeta/status/1957415922416693271",
+      "tags": ["reputation", "trust", "interaction"]
+    },
+    {
+      "id": "reputation-as-currency",
+      "title": "On reputation as currency",
+      "text": "Reputation is the currency of trust. Longevity and expected importance of reputation persistence raises the currency value.",
+      "tweet_url": "https://x.com/tomismeta/status/1698743129455685922",
+      "tags": ["reputation", "trust", "currency", "value"]
+    }
+  ],
+  "meta": {
+    "count": 13,
+    "source_url": "https://internethuman.neocities.org",
+    "last_updated": "2025-12-30",
+    "version": "1.0.0"
+  }
+}

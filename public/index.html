@@ -100,12 +100,40 @@
 <hr>
 
 <div class="section">
+  <h2>Thoughts</h2>
+  <p>Short-form ideas on network consciousness, hyperreality, and being human online.</p>
+  <select id="thought-select">
+    <option value="">— select thought —</option>
+  </select>
+  <button onclick="loadThought()">Load</button>
+  
+  <div id="thought-result" class="result"></div>
+</div>
+
+<hr>
+
+<div class="section">
+  <h2>Search by Tag</h2>
+  <select id="tag-select">
+    <option value="">— select tag —</option>
+  </select>
+  <button onclick="loadTag()">Search</button>
+  
+  <div id="tag-result" class="result"></div>
+</div>
+
+<hr>
+
+<div class="section">
   <h2>API Endpoints</h2>
   <ul>
     <li><a href="/api/essays">/api/essays</a> — list all essays</li>
     <li><a href="/api/essays/new-art">/api/essays/{id}</a> — full essay data</li>
     <li><a href="/api/themes/new-art">/api/themes/{essayId}</a> — themes + relationships</li>
     <li><a href="/api/themes/new-art/hindsight-recognition">/api/themes/{essayId}/{themeId}</a> — single theme</li>
+    <li><a href="/api/thoughts">/api/thoughts</a> — list all thoughts</li>
+    <li><a href="/api/thoughts/hyper-abstractionism">/api/thoughts/{id}</a> — single thought</li>
+    <li><a href="/api/thoughts/tags/hyperstition">/api/thoughts/tags/{tag}</a> — thoughts by tag</li>
     <li><a href="/api/authors">/api/authors</a> — list all authors</li>
     <li><a href="/api/authors/tomismeta">/api/authors/{handle}</a> — author + quotes</li>
   </ul>
@@ -140,6 +168,28 @@ async function init() {
     opt.value = a.handle || a.name;
     opt.textContent = `${a.name} (@${a.handle})`;
     authorSelect.appendChild(opt);
+  });
+  
+  // Load thoughts
+  const thoughts = await fetch(`${API}/api/thoughts`).then(r => r.json());
+  const thoughtSelect = document.getElementById('thought-select');
+  const tagSelect = document.getElementById('tag-select');
+  const allTags = new Set();
+  
+  thoughts.thoughts.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t.id;
+    opt.textContent = t.title;
+    thoughtSelect.appendChild(opt);
+    t.tags.forEach(tag => allTags.add(tag));
+  });
+  
+  // Populate tags
+  [...allTags].sort().forEach(tag => {
+    const opt = document.createElement('option');
+    opt.value = tag;
+    opt.textContent = tag;
+    tagSelect.appendChild(opt);
   });
 }
 
@@ -237,6 +287,40 @@ async function loadAuthor() {
   });
   
   document.getElementById('author-result').innerHTML = html;
+}
+
+async function loadThought() {
+  const id = document.getElementById('thought-select').value;
+  if (!id) return;
+  
+  const data = await fetch(`${API}/api/thoughts/${id}`).then(r => r.json());
+  
+  let html = `<h3>${data.title}</h3>`;
+  html += `<blockquote>${data.text}</blockquote>`;
+  html += `<p class="meta">Tags: ${data.tags.join(', ')}</p>`;
+  html += `<p><a href="${data.tweet_url}">View tweet →</a></p>`;
+  
+  document.getElementById('thought-result').innerHTML = html;
+}
+
+async function loadTag() {
+  const tag = document.getElementById('tag-select').value;
+  if (!tag) return;
+  
+  const data = await fetch(`${API}/api/thoughts/tags/${tag}`).then(r => r.json());
+  
+  let html = `<h3>Tag: ${data.tag}</h3>`;
+  html += `<p>${data.count} thought(s)</p>`;
+  
+  data.thoughts.forEach(t => {
+    html += `<div class="theme-item">`;
+    html += `<div class="theme-name">${t.title}</div>`;
+    html += `<blockquote>${t.text}</blockquote>`;
+    html += `<p class="meta"><a href="${t.tweet_url}">tweet</a></p>`;
+    html += `</div>`;
+  });
+  
+  document.getElementById('tag-result').innerHTML = html;
 }
 
 init();
