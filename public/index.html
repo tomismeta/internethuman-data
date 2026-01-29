@@ -88,7 +88,7 @@
 
 <div class="section">
   <h2>Themes</h2>
-  <p>Explore themes from the selected essay.</p>
+  <p>Explore themes across all essays.</p>
   <select id="theme-select">
     <option value="">— select theme —</option>
   </select>
@@ -160,6 +160,18 @@ async function init() {
     essaySelect.appendChild(opt);
   });
   
+  // Load all themes from all essays
+  const themeSelect = document.getElementById('theme-select');
+  for (const essay of essays.essays) {
+    const essayData = await fetch(`${API}/api/essays/${essay.id}`).then(r => r.json());
+    (essayData.themes || []).forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = `${essay.id}/${t.id}`;
+      opt.textContent = `${t.name} (${essayData.title})`;
+      themeSelect.appendChild(opt);
+    });
+  }
+  
   // Load authors
   const authors = await fetch(`${API}/api/authors`).then(r => r.json());
   const authorSelect = document.getElementById('author-select');
@@ -198,16 +210,6 @@ async function loadEssay() {
   if (!id) return;
   
   const data = await fetch(`${API}/api/essays/${id}`).then(r => r.json());
-  const themeSelect = document.getElementById('theme-select');
-  
-  // Populate themes dropdown
-  themeSelect.innerHTML = '<option value="">— select theme —</option>';
-  (data.themes || []).forEach(t => {
-    const opt = document.createElement('option');
-    opt.value = `${id}/${t.id}`;
-    opt.textContent = t.name;
-    themeSelect.appendChild(opt);
-  });
   
   // Display essay
   let html = `<h3>${data.title}</h3>`;
